@@ -123,7 +123,7 @@ on boot
     insmod /system/lib/modules/kineto_gan.ko
 
     # Load bcmdhd.ko while booting
-    insmod /system/lib/modules/bcmdhd.ko
+    insmod lib/modules/bcmdhd.ko
 
 # compass/accelerometer daemon
 service akmd /system/bin/akmd
