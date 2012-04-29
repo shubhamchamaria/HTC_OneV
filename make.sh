@@ -1,3 +1,4 @@
+echo "~TITANIUM KERNEL COMPILER~"
 cd Kernel
 echo "Cleaning up source"
 make clean && make mrproper

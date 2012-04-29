@@ -1106,7 +1106,7 @@ CONFIG_BCMDHD_NVRAM_PATH="/etc/calibration"
 #
 # Kineto GAN
 #
-CONFIG_KINETO_GAN=y
+CONFIG_KINETO_GAN=m
 
 #
 # TI WLAN driver
