@@ -853,6 +853,14 @@ static int __init cpufreq_smartass_init(void)
 		this_smartass->timer.data = i;
 		work_cpumask_test_and_clear(i);
 	}
+	// Scale up is high priority
+		return -ENOMEM;
+
+	INIT_WORK(&freq_scale_work, cpufreq_smartass_freq_change_time_work);
+
+	register_early_suspend(&smartass_power_suspend);
+
+	return cpufreq_register_governor(&cpufreq_gov_smartass2);
 }
 
 #ifdef CONFIG_CPU_FREQ_DEFAULT_GOV_SMARTASS2
