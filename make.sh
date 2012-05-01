@@ -7,11 +7,11 @@ echo "Enter your kernel version"
 read vrsn;
 echo $vrsn > CURRENT_VERSION
 echo "Making config"
-make titanium_defconfig
+make Adi_Pat_defconfig
 echo "Adding Current Version to Kernel"
 cp CURRENT_VERSION .version
 echo "Building Kernel"
-make -j48
+make -j84
 echo "Kernel ready"
 cp -f arch/arm/boot/zImage /home/aditya/HTC_OneV/zImage
 echo "Copying modules"
