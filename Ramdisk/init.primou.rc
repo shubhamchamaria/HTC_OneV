@@ -125,6 +125,10 @@ on boot
     # Load bcmdhd.ko while booting
     insmod lib/modules/bcmdhd.ko
 
+    # Load CIFS and TUN modules
+    insmod lib/modules/cifs.ko
+    insmod lib/modules/tun.ko 
+
 # compass/accelerometer daemon
 service akmd /system/bin/akmd
     user compass
