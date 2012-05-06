@@ -132,8 +132,6 @@ on boot
     # Load Governers
     insmod lib/modules/cpufreq_smartass2.ko
     insmod lib/modules/cpufreq_lagfree.ko  
-    insmod lib/modules/cpufreq_minmax.ko
-    insmod lib/modules/cpufreq_lionheart.ko
 
 # compass/accelerometer daemon
 service akmd /system/bin/akmd
