@@ -1,4 +1,4 @@
-/*
+*
  * XZ decoder tester
  *
  * Author: Lasse Collin <lasse.collin@tukaani.org>
