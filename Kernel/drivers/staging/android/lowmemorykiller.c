@@ -40,7 +40,7 @@
 
 #ifdef CONFIG_SWAP
 #include <linux/fs.h>
-#include <linux/swap.sh>
+#include <linux/swap.h>
 #endif
 
 #define DEBUG_LEVEL_DEATHPENDING 6
