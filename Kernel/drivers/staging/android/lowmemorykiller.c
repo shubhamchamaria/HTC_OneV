@@ -38,6 +38,11 @@
 #include <linux/memory.h>
 #include <linux/memory_hotplug.h>
 
+#ifdef CONFIG_SWAP
+#include <linux/fs.h>
+#include <linux/swap.sh>
+#endif
+
 #define DEBUG_LEVEL_DEATHPENDING 6
 
 static uint32_t lowmem_debug_level = 2;
@@ -80,6 +85,9 @@ static int lowmem_minfile_size = 6;
 static struct task_struct *lowmem_deathpending;
 static unsigned long lowmem_deathpending_timeout;
 static uint32_t lowmem_check_filepages = 0;
+#ifdef CONFIG_SWAP
+static int fudgeswap = 512;
+#endif
 static unsigned long lowmem_fork_boost_timeout;
 /*
  * discount = 1 -> 1/2^1 = 50% Off
@@ -243,6 +251,20 @@ static int lowmem_shrink(struct shrinker *s, struct shrink_control *sc)
 		return 0;
 	}
 
+#ifdef CONFIG_SWAP
+	if(fudgeswap != 0){
+	   struct sysinfo si;
+	   si_swapinfo(&si);
+
+	if(si.freeswap > 0){
+	   if(fudgeswap > si.freeswap)
+	      other_file += si.freeswap;
+	   else 
+	      other_file += fudgeswap;
+	}
+	}
+#endif
+
 	if (lowmem_fork_boost &&
 	    time_before_eq(jiffies, lowmem_fork_boost_timeout)) {
 		fork_boost = lowmem_minfree[lowmem_minfree_size - 1] >> discount;
@@ -379,6 +401,9 @@ module_param_named(check_filepages , lowmem_check_filepages, uint,
 		   S_IRUGO | S_IWUSR);
 module_param_array_named(minfile, lowmem_minfile, uint, &lowmem_minfile_size,
 			 S_IRUGO | S_IWUSR);
+#ifdef CONFIG_SWAP
+module_param_named(fudgeswap, fudgeswap, int, S_IRUGO | S_IWUSR);
+#endif
 
 module_init(lowmem_init);
 module_exit(lowmem_exit);
