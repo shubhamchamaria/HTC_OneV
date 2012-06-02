@@ -1027,6 +1027,7 @@ void __mark_inode_dirty(struct inode *inode, int flags)
 {
 	struct super_block *sb = inode->i_sb;
 	struct backing_dev_info *bdi = NULL;
+	smp_mb();
 
 	/*
 	 * Don't do this for I_DIRTY_PAGES - that doesn't actually
