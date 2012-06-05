@@ -38,7 +38,7 @@
 #include <linux/memory.h>
 #include <linux/memory_hotplug.h>
 
-#ifdef CONFIG_SWAP
+#ifdef CONFIG_FUDGESWAP
 #include <linux/fs.h>
 #include <linux/swap.h>
 #endif
@@ -85,7 +85,7 @@ static int lowmem_minfile_size = 6;
 static struct task_struct *lowmem_deathpending;
 static unsigned long lowmem_deathpending_timeout;
 static uint32_t lowmem_check_filepages = 0;
-#ifdef CONFIG_SWAP
+#ifdef CONFIG_FUDGESWAP
 static int fudgeswap = 512;
 #endif
 static unsigned long lowmem_fork_boost_timeout;
@@ -251,7 +251,7 @@ static int lowmem_shrink(struct shrinker *s, struct shrink_control *sc)
 		return 0;
 	}
 
-#ifdef CONFIG_SWAP
+#ifdef CONFIG_FUDGESWAP
 	if(fudgeswap != 0){
 	   struct sysinfo si;
 	   si_swapinfo(&si);
@@ -401,7 +401,7 @@ module_param_named(check_filepages , lowmem_check_filepages, uint,
 		   S_IRUGO | S_IWUSR);
 module_param_array_named(minfile, lowmem_minfile, uint, &lowmem_minfile_size,
 			 S_IRUGO | S_IWUSR);
-#ifdef CONFIG_SWAP
+#ifdef CONFIG_FUDGESWAP
 module_param_named(fudgeswap, fudgeswap, int, S_IRUGO | S_IWUSR);
 #endif
 
