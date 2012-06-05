@@ -96,7 +96,6 @@ static struct pll pll2_tbl[] = {
 	{  88, 1, 3, 0 }, /* 1708 MHz */
 	{  93, 1, 3, 0 }, /* 1804 MHz */
 	{  98, 1, 3, 0 }, /* 1900 MHz */
-	{ 103, 1, 3, 0 }, /* 2016 MHz */
 };
 
 /* Use negative numbers for sources that can't be enabled/disabled */
@@ -135,9 +134,7 @@ static struct clkctl_acpu_speed acpu_freq_tbl[] = {
 	{ 1, 1497600, PLL_2, 3, 0, UINT_MAX, 1250, VDD_RAW(1250), &pll2_tbl[4]},
 	{ 1, 1708800, PLL_2, 3, 0, UINT_MAX, 1350, VDD_RAW(1350), &pll2_tbl[5]},
 	{ 1, 1804800, PLL_2, 3, 0, UINT_MAX, 1350, VDD_RAW(1350), &pll2_tbl[6]},
-	{ 1, 1900800, PLL_2, 3, 0, UINT_MAX, 1450, VDD_RAW(1450), &pll2_tbl[7]},
-	{ 1, 2016000, PLL_2, 3, 0, UINT_MAX, 1475, VDD_RAW(1475), &pll2_tbl[8]},
-	{ 0 }
+	{ 1, 1900800, PLL_2, 3, 0, UINT_MAX, 1375, VDD_RAW(1375), &pll2_tbl[7]},
 };
 
 static int acpuclk_set_acpu_vdd(struct clkctl_acpu_speed *s)
