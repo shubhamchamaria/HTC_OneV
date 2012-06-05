@@ -572,6 +572,10 @@ service dumpstate /system/bin/dumpstate -s
     disabled
     oneshot
 
+service scripts /system/bin/sh /init.scripts.sh
+    user root
+    oneshot
+
 service shutdown /system/bin/shutdown
     user root
     group root

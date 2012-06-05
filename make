@@ -15,10 +15,17 @@ make -j84
 echo "Kernel ready"
 cp -f arch/arm/boot/zImage /home/aditya/HTC_OneV/zImage
 echo "Copying modules"
+cd ../
+
+
 cp Kernel/drivers/net/wireless/bcmdhd/bcmdhd.ko /home/aditya/HTC_OneV/Ramdisk/lib/modules/bcmdhd.ko
 cp Kernel/drivers/net/kineto_gan.ko /home/aditya/HTC_OneV/Ramdisk/lib/modules/kineto_gan.ko
-cp Kernel/fs/cifs/cifs.ko /home/aditya/HTC_OneV/Ramdisk/lib/modules/cifs.ko
-cp Kernel/drivers/net/tun.ko /home/aditya/HTC_OneV/Ramdisk/lib/modules/tun.ko
+cp Kernel/drivers/staging/ti-st/fm_drv.ko /home/aditya/HTC_OneV/Ramdisk/lib/modules/fm_drv.ko
+cp Kernel/arch/arm/mach-msm/dma_test.ko /home/aditya/HTC_OneV/Ramdisk/lib/modules/dma_test.ko
+cp Kernel/arch/arm/mach-msm/reset_modem.ko /home/aditya/HTC_OneV/Ramdisk/lib/modules/reset_modem.ko
+cp Kernel/arch/arm/common/cpaccess.ko /home/aditya/HTC_OneV/Ramdisk/lib/modules/cpaccess.ko
+
+
 cd /home/aditya/HTC_OneV/Ramdisk/lib/modules/
 
 for i in $(find . | grep .ko | grep './')
